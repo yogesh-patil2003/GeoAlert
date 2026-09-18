@@ -1,16 +1,51 @@
-# React + Vite
+# GeoAlert — Frontend 🌐
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The web client for **GeoAlert**, built with **React 19**, **Vite 7**, **Tailwind CSS**, **Three.js**, and **Leaflet**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tech Stack & Libraries
 
-## React Compiler
+- **Framework**: React 19 + Vite 7
+- **3D Graphics**: Three.js, `@react-three/fiber`, `@react-three/drei` (Interactive 3D Earth Globe)
+- **GIS & Mapping**: Leaflet 1.9, `react-leaflet`, `react-leaflet-draw`
+- **Charts & Data Viz**: Recharts (NDVI trends and anomaly statistics)
+- **Styling & UI**: Tailwind CSS 3.4, Lucide React icons, Framer Motion
+- **Notifications**: React Hot Toast
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🚀 Development Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+   The application will launch on `http://localhost:5173`.
+
+3. **Build for production:**
+   ```bash
+   npm run build
+   ```
+   Build output will be generated in `dist/`.
+
+4. **Lint code:**
+   ```bash
+   npm run lint
+   ```
+
+---
+
+## 🧭 Page Overview
+
+- **Landing (`pages/Landing.jsx`)**: 3D globe hero page with mission overview and authentication.
+- **Dashboard (`pages/Dashboard.jsx`)**: Metrics overview, active AOI status, recent alerts, and quick actions.
+- **Map Explorer (`pages/MapExplorer.jsx`)**: Full-screen interactive Leaflet map for drawing and exploring custom AOIs.
+- **Analysis (`pages/Analysis.jsx`)**: In-depth temporal satellite comparison, NDVI difference maps, and threshold calibration.
+- **Alerts (`pages/Alerts.jsx`)**: Incident management, severity breakdown, and email notification logs.
+- **Settings (`pages/Settings.jsx`)**: User preferences, API configurations, and threshold settings.

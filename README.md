@@ -1,5 +1,14 @@
 # GeoAlert 🛰️
+
+<div align="center">
+
 ### Real-Time Geospatial Intelligence, Earth Observation & Automated Environmental Alerting
+
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-geo--alert--ten.vercel.app-22c55e?style=for-the-badge&logo=vercel&logoColor=white)](https://geo-alert-ten.vercel.app/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-GeoAlert-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/yogesh-patil2003/GeoAlert)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
+
+---
 
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688.svg?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB.svg?logo=python&logoColor=white)](https://www.python.org)
@@ -9,7 +18,16 @@
 [![Leaflet](https://img.shields.io/badge/Leaflet-1.9-199900.svg?logo=leaflet&logoColor=white)](https://leafletjs.com)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-38B2AC.svg?logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
 [![Google Earth Engine](https://img.shields.io/badge/Google_Earth_Engine-API-4285F4.svg?logo=google-cloud&logoColor=white)](https://earthengine.google.com)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+</div>
+
+---
+
+## 🚀 Live Demo
+
+> **Try it live:** [https://geo-alert-ten.vercel.app/](https://geo-alert-ten.vercel.app/)
+
+The frontend is deployed on **Vercel** and connects to a **FastAPI** backend for real-time earth observation, NDVI analysis, and change detection.
 
 ---
 
@@ -23,16 +41,23 @@ By coupling high-resolution multispectral imagery from **ESA Copernicus Sentinel
 
 ## ✨ Key Capabilities
 
-- **🛰️ Multi-Provider Earth Observation**: Ingests Sentinel-2 L2A multispectral data (Band 4 Red & Band 8 NIR at 10m spatial resolution) via ESA Copernicus Data Space STAC APIs and Google Earth Engine planetary catalogs.
-- **🌿 Precision NDVI & Spectral Processing**: Computes per-pixel NDVI across temporal timestamps ($T_1$ and $T_2$) to assess vegetation health, canopy loss, and soil exposure.
-- **🔬 Computer Vision Change Detection**: Utilizes OpenCV image differencing, morphological noise reduction (opening/closing kernels), and connected-component analysis to highlight genuine land alterations.
-- **🌐 3D Planetary Visualization & Interactive GIS**: Features an interactive 3D Earth Globe built with **Three.js** / **React Three Fiber** alongside a high-performance **Leaflet** GIS explorer with custom Area of Interest (AOI) polygon, rectangle, and marker drawing.
-- **🏙️ Specialized Analytical Pipelines**:
-  - **Urban Expansion**: Google Earth Engine integration for tracking impervious surfaces and built-up land growth.
-  - **Agricultural Monitoring**: Time-series NDVI profiling for crop vigor and stress detection.
-- **📧 Automated Alert Engine**: Configurable anomaly thresholds with instant, automated SMTP HTML email dispatch delivering change metrics and spatial summaries.
-- **🌦️ Environmental & Weather Telemetry**: Integrated OpenWeatherMap overlay displaying real-time local temperature, humidity, and cloud coverage for active AOIs.
-- **🔐 Multi-Tenant & Secure**: Google OAuth 2.0 verification, user-isolated AOIs and alerts, backed by SQLAlchemy with SQLite (development) and PostgreSQL (production) compatibility.
+| Feature | Description |
+|---|---|
+| 🛰️ **Multi-Provider EO** | Ingests Sentinel-2 L2A multispectral data (Band 4 Red & Band 8 NIR at 10m) via ESA Copernicus STAC APIs and Google Earth Engine |
+| 🌿 **Precision NDVI** | Computes per-pixel NDVI across temporal timestamps (T₁ and T₂) to assess vegetation health, canopy loss, and soil exposure |
+| 🔬 **CV Change Detection** | Utilizes OpenCV image differencing, morphological noise reduction (opening/closing kernels), and connected-component analysis |
+| 🌐 **3D Globe + GIS** | Interactive 3D Earth Globe (Three.js / React Three Fiber) + Leaflet GIS explorer with custom AOI polygon, rectangle & marker drawing |
+| 🏙️ **Urban Expansion** | Google Earth Engine integration for tracking impervious surfaces and built-up land growth |
+| 🌾 **Agricultural Monitoring** | Time-series NDVI profiling for crop vigor and stress detection |
+| 📧 **Automated Alerts** | Configurable anomaly thresholds with instant SMTP HTML email dispatch delivering change metrics and spatial summaries |
+| 🌦️ **Weather Telemetry** | Integrated OpenWeatherMap overlay showing real-time temperature, humidity, and cloud coverage for active AOIs |
+| 🔐 **Secure Multi-Tenant** | Google OAuth 2.0 verification, user-isolated AOIs and alerts, backed by SQLAlchemy with SQLite/PostgreSQL |
+
+---
+
+## 🖼️ Screenshots
+
+> Visit the live app at [https://geo-alert-ten.vercel.app/](https://geo-alert-ten.vercel.app/) to see GeoAlert in action.
 
 ---
 
@@ -40,7 +65,7 @@ By coupling high-resolution multispectral imagery from **ESA Copernicus Sentinel
 
 ```mermaid
 graph TD
-    subgraph Client ["Frontend (React 19 + Vite)"]
+    subgraph Client ["Frontend (React 19 + Vite) — Vercel"]
         Landing["3D Globe Landing Page (Three.js)"]
         Map["Interactive GIS Explorer (Leaflet)"]
         Dash["Analytics Dashboard (Recharts)"]
@@ -83,187 +108,343 @@ graph TD
 
 ```
 GeoAlert/
-├── backend/                  # FastAPI Application
-│   ├── main.py               # Core FastAPI routes, CV engine & GEE services
-│   ├── requirements.txt      # Python dependencies
-│   ├── .env.example          # Environment variables template
-│   ├── test_api.py           # Backend test suite
-│   ├── test_ee.py            # Earth Engine verification script
-│   └── test_db_isolation.py  # Multi-tenant isolation tests
-├── frontend/                 # React 19 + Vite Application
-│   ├── src/
-│   │   ├── components/       # Reusable components (AOIMap, Charts, Sidebar, Topbar)
-│   │   ├── pages/            # Views (Dashboard, MapExplorer, Analysis, Alerts, Settings)
-│   │   ├── context/          # Global application state & Auth providers
-│   │   └── index.css         # Tailwind & modern design tokens
-│   ├── package.json          # Node dependencies & build scripts
-│   └── vite.config.js        # Vite bundling configuration
-├── .gitignore                # Git ignore rules (protects credentials & cache)
-└── README.md                 # Project documentation
+├── backend/                      # FastAPI Application
+│   ├── main.py                   # Core FastAPI routes, CV engine & GEE services
+│   ├── requirements.txt          # Python dependencies
+│   ├── .env.example              # Environment variables template
+│   ├── test_api.py               # Backend test suite
+│   ├── test_ee.py                # Earth Engine verification script
+│   └── test_db_isolation.py     # Multi-tenant isolation tests
+├── frontend/                     # React + Vite Application
+│   ├── src/                      # React source code
+│   ├── public/                   # Static assets
+│   ├── index.html                # Entry HTML
+│   ├── package.json              # JS dependencies
+│   ├── vite.config.js            # Vite bundler config
+│   ├── tailwind.config.js        # Tailwind CSS config
+│   └── postcss.config.js         # PostCSS config
+├── stac_clean.json               # Sample STAC metadata (clean)
+├── stac_out.json                 # Sample STAC metadata (raw)
+├── LICENSE                       # MIT License
+└── README.md
 ```
 
 ---
 
-## 🚀 Quick Start
+## 🛠️ Tech Stack
+
+### Frontend
+
+| Technology | Version | Purpose |
+|---|---|---|
+| [React](https://react.dev) | 19.2 | UI framework |
+| [Vite](https://vitejs.dev) | 7.3 | Build tool & dev server |
+| [Three.js](https://threejs.org) / [@react-three/fiber](https://r3f.docs.pmnd.rs) | r183 / 9.5 | 3D Earth Globe rendering |
+| [@react-three/drei](https://github.com/pmndrs/drei) | 10.7 | Three.js helpers |
+| [Leaflet](https://leafletjs.com) + [React-Leaflet](https://react-leaflet.js.org) | 1.9 | 2D GIS map & AOI drawing |
+| [TailwindCSS](https://tailwindcss.com) | 3.4 | Utility-first styling |
+| [Framer Motion](https://www.framer.com/motion/) | 12.x | UI animations |
+| [Recharts](https://recharts.org) | — | Analytics charts |
+| [Axios](https://axios-http.com) | 1.13 | HTTP client |
+| [date-fns](https://date-fns.org) | 4.x | Date utilities |
+
+### Backend
+
+| Technology | Version | Purpose |
+|---|---|---|
+| [FastAPI](https://fastapi.tiangolo.com) | 0.115 | REST API framework |
+| [Uvicorn](https://www.uvicorn.org) | 0.32 | ASGI server |
+| [OpenCV (headless)](https://opencv.org) | 4.10 | Computer vision & change detection |
+| [NumPy](https://numpy.org) | 1.26 | Numerical & spectral computation |
+| [Pillow](https://pillow.readthedocs.io) | 10.4 | Image processing |
+| [SQLAlchemy](https://www.sqlalchemy.org) | 2.0 | ORM & database layer |
+| [Pydantic](https://docs.pydantic.dev) | 2.8 | Data validation |
+| [httpx](https://www.python-httpx.org) | 0.27 | Async HTTP client |
+| [python-dotenv](https://pypi.org/project/python-dotenv) | 1.0 | Environment variable management |
+| [earthengine-api](https://developers.google.com/earth-engine) | latest | Google Earth Engine planetary catalog |
+| [python-multipart](https://pypi.org/project/python-multipart) | 0.0.9 | Form/file upload support |
+
+### Infrastructure & APIs
+
+- **Deployment**: [Vercel](https://vercel.com) (Frontend) + any ASGI host (Backend)
+- **Satellite Data**: [ESA Copernicus Data Space (CDSE)](https://dataspace.copernicus.eu) — Sentinel-2 L2A via STAC API
+- **Planetary Compute**: [Google Earth Engine](https://earthengine.google.com)
+- **Weather**: [OpenWeatherMap API](https://openweathermap.org/api)
+- **Authentication**: [Google OAuth 2.0](https://developers.google.com/identity)
+- **Database**: SQLite (development) / PostgreSQL (production)
+
+---
+
+## ⚙️ Local Setup
 
 ### Prerequisites
 
-- **Python**: 3.10 or 3.11+
-- **Node.js**: 18.x or 20.x+
-- **npm**: 9.x+
+- Python 3.11+
+- Node.js 18+
+- A Google Cloud project with Earth Engine API enabled
+- ESA Copernicus Data Space account (free)
+- OpenWeatherMap API key (free tier)
+- Gmail / SMTP credentials for alert emails
 
 ---
 
-### 1. Backend Setup
+### 1. Clone the Repository
 
-1. **Navigate to backend and create a virtual environment:**
-   ```bash
-   cd backend
-   python -m venv .venv
-   ```
-
-2. **Activate the virtual environment:**
-   - **Windows (PowerShell):**
-     ```powershell
-     .venv\Scripts\Activate.ps1
-     ```
-   - **Linux / macOS:**
-     ```bash
-     source .venv/bin/activate
-     ```
-
-3. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Configure environment variables:**
-   ```bash
-   cp .env.example .env
-   ```
-   *Edit `.env` to configure satellite APIs, Google Earth Engine, or SMTP email credentials (see [Environment Configuration](#-environment-configuration)).*
-
-5. **Start the FastAPI server:**
-   ```bash
-   uvicorn main:app --reload --port 8000
-   ```
-   The backend will be available at: **http://127.0.0.1:8000**  
-   Interactive Swagger docs: **http://127.0.0.1:8000/docs**
+```bash
+git clone https://github.com/yogesh-patil2003/GeoAlert.git
+cd GeoAlert
+```
 
 ---
 
-### 2. Frontend Setup
+### 2. Backend Setup
 
-1. **Navigate to the frontend directory:**
-   ```bash
-   cd frontend
-   ```
+```bash
+cd backend
 
-2. **Install Node packages:**
-   ```bash
-   npm install
-   ```
+# Create virtual environment
+python -m venv venv
 
-3. **Start the Vite development server:**
-   ```bash
-   npm run dev
-   ```
-   Open your browser at: **http://localhost:5173**
+# Activate (Linux/macOS)
+source venv/bin/activate
 
----
+# Activate (Windows)
+venv\Scripts\activate
 
-## ⚙️ Environment Configuration
+# Install dependencies
+pip install -r requirements.txt
+```
 
-Configuration variables are managed in `backend/.env`. Refer to [`backend/.env.example`](backend/.env.example) for the default template:
+#### Configure Environment Variables
 
-| Variable | Description | Default / Example | Required |
-|---|---|---|:---:|
-| `CDSE_CLIENT_ID` | ESA Copernicus Data Space OAuth Client ID | `your_cdse_client_id` | Optional* |
-| `CDSE_CLIENT_SECRET` | ESA Copernicus Data Space OAuth Secret | `your_cdse_client_secret` | Optional* |
-| `EE_SERVICE_ACCOUNT_KEY` | Google Earth Engine Service Account credentials (JSON or file path) | `backend/earth_engine_key.json` | Optional* |
-| `OPENWEATHER_API_KEY` | OpenWeatherMap API Key for atmospheric telemetry | `your_openweather_key` | Optional |
-| `DATABASE_URL` | SQLAlchemy connection string | `sqlite:///./database.db` | No |
-| `GOOGLE_CLIENT_ID` | Google OAuth Client ID for frontend token validation | `your_google_client_id` | No |
-| `SMTP_HOST` | Outgoing SMTP mail server | `smtp.gmail.com` | No |
-| `SMTP_PORT` | Outgoing SMTP port | `587` | No |
-| `SMTP_USER` | SMTP sender email address | `user@example.com` | For Alerts |
-| `SMTP_PASS` | SMTP application password | `app_password` | For Alerts |
-| `ALERT_RECIPIENT` | Fallback alert destination email | `admin@example.com` | No |
+Copy `.env.example` to `.env` and fill in your credentials:
 
-*\* Note: When CDSE or GEE credentials are omitted, the backend gracefully utilizes public STAC search fallbacks and synthetic test scenes for offline development.*
+```bash
+cp .env.example .env
+```
 
----
+Key environment variables:
 
-## 🔬 Change Detection & NDVI Methodology
+```env
+# Google Earth Engine
+GOOGLE_APPLICATION_CREDENTIALS=path/to/service-account-key.json
+EE_PROJECT_ID=your-gee-project-id
 
-### Normalized Difference Vegetation Index (NDVI)
+# Copernicus Data Space
+CDSE_USERNAME=your-cdse-email
+CDSE_PASSWORD=your-cdse-password
 
-$$\text{NDVI} = \frac{\text{NIR} - \text{RED}}{\text{NIR} + \text{RED}} = \frac{\text{Band 8} - \text{Band 4}}{\text{Band 8} + \text{Band 4}}$$
+# OpenWeatherMap
+OPENWEATHER_API_KEY=your-openweathermap-key
 
-| NDVI Range | Surface Classification | Alert Significance |
-|:---|:---|:---|
-| **0.70 to 1.00** | Dense, healthy forest canopy or active crops | Baseline optimal |
-| **0.50 to 0.69** | Moderate vegetation / shrubland | Normal |
-| **0.20 to 0.49** | Sparse vegetation, degraded cropland | Potential stress |
-| **0.00 to 0.19** | Bare soil, rock, urban surface | Deforested / Cleared |
-| **< 0.00** | Open water, wetlands, cloud shadows | Hydrological variation |
+# Email Alerts (SMTP)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your@gmail.com
+SMTP_PASSWORD=your-app-password
 
-### Temporal Differencing Pipeline
+# Google OAuth
+GOOGLE_CLIENT_ID=your-google-client-id
 
-1. **Acquisition**: Query Sentinel-2 L2A STAC items for baseline timestamp ($T_1$) and target timestamp ($T_2$) covering the AOI bounding box.
-2. **Spectral Computation**: Derive per-pixel NDVI matrices for both periods: $\text{NDVI}_{T_1}$ and $\text{NDVI}_{T_2}$.
-3. **Differencing**: Calculate the delta map: $\Delta \text{NDVI} = \text{NDVI}_{T_2} - \text{NDVI}_{T_1}$.
-4. **Threshold Segmentation**: Flag pixels exceeding the threshold ($\Delta \text{NDVI} \le -\tau$, default $\tau = 0.10$) as negative anomalies.
-5. **Morphological Cleaning**: Apply OpenCV morphological opening and closing kernels to filter out single-pixel sensor noise and atmospheric artifacts.
-6. **Classification & Action**:
-   - **Critical** ($\text{Change} \ge 15\%$): Immediate automated SMTP alert dispatched.
-   - **Warning** ($5\% \le \text{Change} < 15\%$): Recorded in user alerts panel.
-   - **Info** ($\text{Change} < 5\%$): Logged for baseline trend tracking.
+# Database
+DATABASE_URL=sqlite:///./geoalert.db
+```
+
+#### Run the Backend Server
+
+```bash
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+API docs available at: [http://localhost:8000/docs](http://localhost:8000/docs)
 
 ---
 
-## 📡 API Reference Summary
+### 3. Frontend Setup
+
+```bash
+cd ../frontend
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+App available at: [http://localhost:5173](http://localhost:5173)
+
+#### Frontend Build (Production)
+
+```bash
+npm run build
+```
+
+---
+
+### 4. Running Tests
+
+```bash
+cd backend
+
+# Backend API tests
+python test_api.py
+
+# Earth Engine connectivity test
+python test_ee.py
+
+# Multi-tenant DB isolation tests
+python test_db_isolation.py
+```
+
+---
+
+## 🌍 How It Works
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                   User draws AOI on map                 │
+│           (polygon / rectangle / marker)                │
+└────────────────────────────┬────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────┐
+│          FastAPI fetches Sentinel-2 imagery             │
+│      from ESA Copernicus STAC (T₁ and T₂ dates)        │
+└────────────────────────────┬────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────┐
+│   OpenCV + NumPy compute NDVI per-pixel difference      │
+│   Morphological filtering removes sensor noise          │
+│   Connected-component analysis isolates real changes    │
+└────────────────────────────┬────────────────────────────┘
+                             │
+                  ┌──────────┴──────────┐
+                  ▼                     ▼
+     ┌────────────────────┐  ┌──────────────────────┐
+     │  Results returned  │  │  Threshold breached?  │
+     │  to React frontend │  │  → Email alert sent   │
+     │  (map overlay +    │  │  via SMTP dispatcher  │
+     │   NDVI chart)      │  └──────────────────────┘
+     └────────────────────┘
+```
+
+---
+
+## 📊 NDVI Formula
+
+$$
+NDVI = \frac{NIR - Red}{NIR + Red} = \frac{Band_8 - Band_4}{Band_8 + Band_4}
+$$
+
+| NDVI Range | Interpretation |
+|---|---|
+| `0.6 – 1.0` | Dense healthy vegetation |
+| `0.2 – 0.6` | Moderate vegetation |
+| `0.0 – 0.2` | Sparse / stressed vegetation |
+| `< 0.0` | Bare soil, water, or urban |
+
+---
+
+## 📡 API Reference
+
+The FastAPI backend auto-generates interactive docs:
+
+- **Swagger UI**: `http://localhost:8000/docs`
+- **ReDoc**: `http://localhost:8000/redoc`
+
+### Key Endpoints
 
 | Method | Endpoint | Description |
 |---|---|---|
-| `GET` | `/health` | Healthcheck and provider status |
-| `POST` | `/users` | Register or authenticate a user via Google OAuth |
-| `GET` | `/aois` | Fetch active Areas of Interest for the authenticated user |
-| `POST` | `/aois` | Create a new AOI and trigger initial baseline scan |
-| `PUT` | `/aois/{id}` | Update AOI boundaries, alert thresholds, or name |
-| `DELETE` | `/aois/{id}` | Remove an AOI from tracking |
-| `GET` | `/alerts` | Retrieve user alert history |
-| `POST` | `/analysis/detect` | Execute temporal change detection on an AOI |
-| `POST` | `/alerts/{id}/email` | Dispatch alert notification email for a specific incident |
-| `POST` | `/api/v1/ee/urban` | Google Earth Engine urban expansion analysis |
-| `POST` | `/api/v1/agro/ndvi` | Google Earth Engine agricultural time series |
+| `POST` | `/api/analyze` | Run NDVI change detection for an AOI |
+| `GET` | `/api/aois` | List all user AOIs |
+| `POST` | `/api/aois` | Create a new AOI |
+| `DELETE` | `/api/aois/{id}` | Delete an AOI |
+| `GET` | `/api/alerts` | List triggered alerts |
+| `POST` | `/api/auth/google` | Authenticate with Google OAuth |
+| `GET` | `/api/weather/{lat}/{lon}` | Get weather data for a location |
 
 ---
 
-## 🛡️ Security & Privacy
+## 🔐 Authentication Flow
 
-- **Zero-Credential Commits**: All private keys, `.env` files, database files, and service account tokens (`earth_engine_key.json`) are strictly ignored via `.gitignore` and kept out of version control.
-- **Tenant Isolation**: Every AOI and alert entry is scoped to the verified user's identity.
+```
+User clicks "Sign in with Google"
+         │
+         ▼
+Google OAuth 2.0 consent screen
+         │
+         ▼
+ID token returned to frontend
+         │
+         ▼
+POST /api/auth/google → backend verifies token
+         │
+         ▼
+JWT issued → stored in localStorage
+         │
+         ▼
+All subsequent API calls include Bearer token
+```
+
+---
+
+## 🚀 Deployment
+
+### Frontend (Vercel)
+
+1. Connect your GitHub repository to [Vercel](https://vercel.com)
+2. Set the **root directory** to `frontend`
+3. Build command: `npm run build`
+4. Output directory: `dist`
+5. Add environment variable: `VITE_API_URL=https://your-backend-url.com`
+
+The live frontend is hosted at: **[https://geo-alert-ten.vercel.app/](https://geo-alert-ten.vercel.app/)**
+
+### Backend
+
+Deploy the FastAPI backend to any ASGI-compatible host:
+- **Render** / **Railway** / **Fly.io** / **Google Cloud Run**
+
+```bash
+uvicorn main:app --host 0.0.0.0 --port $PORT
+```
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! To get started:
-1. Fork the repository on GitHub.
-2. Create a feature branch: `git checkout -b feature/amazing-feature`.
-3. Commit your changes: `git commit -m "Add amazing feature"`.
-4. Push to the branch: `git push origin feature/amazing-feature`.
-5. Open a Pull Request.
+Contributions are welcome! Please follow these steps:
+
+1. **Fork** the repository
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m "feat: add your feature"`
+4. Push to the branch: `git push origin feature/your-feature`
+5. Open a **Pull Request**
 
 ---
 
 ## 📄 License
 
-This project is licensed under the **MIT License**. See the `LICENSE` file for details.
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
 ---
 
-<p align="center">
-  <b>GeoAlert</b> — <i>Planetary Perspective for Local Action</i> 🌍
-</p>
+## 👤 Author
+
+**Yogesh Patil**
+- GitHub: [@yogesh-patil2003](https://github.com/yogesh-patil2003)
+- Project: [GeoAlert](https://github.com/yogesh-patil2003/GeoAlert)
+- Live App: [https://geo-alert-ten.vercel.app/](https://geo-alert-ten.vercel.app/)
+
+---
+
+<div align="center">
+
+⭐ **Star this repository if you found it useful!** ⭐
+
+Made with ❤️ using React, FastAPI, Sentinel-2 & Google Earth Engine
+
+</div>

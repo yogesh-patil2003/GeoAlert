@@ -26,3 +26,9 @@ backend/node_modules/
 dist/
 frontend/dist/
 .eslintcache
+
+# Logs & runtime errors
+*.log
+backend/*.log
+error.txt
+backend/error.txt

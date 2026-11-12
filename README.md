@@ -227,12 +227,11 @@ Key environment variables:
 
 ```env
 # Google Earth Engine
-GOOGLE_APPLICATION_CREDENTIALS=path/to/service-account-key.json
-EE_PROJECT_ID=your-gee-project-id
+EE_SERVICE_ACCOUNT_KEY=your-service-account-json-or-base64
 
 # Copernicus Data Space
-CDSE_USERNAME=your-cdse-email
-CDSE_PASSWORD=your-cdse-password
+CDSE_CLIENT_ID=your-cdse-client-id
+CDSE_CLIENT_SECRET=your-cdse-client-secret
 
 # OpenWeatherMap
 OPENWEATHER_API_KEY=your-openweathermap-key
@@ -241,13 +240,14 @@ OPENWEATHER_API_KEY=your-openweathermap-key
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your@gmail.com
-SMTP_PASSWORD=your-app-password
+SMTP_PASS=your-app-password
+ALERT_RECIPIENT=alerts_recipient@example.com
 
 # Google OAuth
 GOOGLE_CLIENT_ID=your-google-client-id
 
 # Database
-DATABASE_URL=sqlite:///./geoalert.db
+DATABASE_URL=sqlite:///./database.db
 ```
 
 #### Run the Backend Server
@@ -358,13 +358,15 @@ The FastAPI backend auto-generates interactive docs:
 
 | Method | Endpoint | Description |
 |---|---|---|
-| `POST` | `/api/analyze` | Run NDVI change detection for an AOI |
-| `GET` | `/api/aois` | List all user AOIs |
-| `POST` | `/api/aois` | Create a new AOI |
-| `DELETE` | `/api/aois/{id}` | Delete an AOI |
-| `GET` | `/api/alerts` | List triggered alerts |
-| `POST` | `/api/auth/google` | Authenticate with Google OAuth |
-| `GET` | `/api/weather/{lat}/{lon}` | Get weather data for a location |
+| `GET` | `/health` | Backend health check |
+| `POST` | `/users` | Register or sync user profile |
+| `POST` | `/analysis/detect` | Run NDVI change detection for an AOI |
+| `POST` | `/api/v1/ee/urban` | Run Google Earth Engine urban expansion analysis |
+| `POST` | `/api/v1/agro/ndvi` | Run agricultural NDVI monitoring query |
+| `GET` / `POST` | `/aois` | List or create user AOIs |
+| `PUT` / `DELETE` | `/aois/{aoi_id}` | Update or remove an AOI |
+| `GET` | `/alerts` | List triggered environmental alerts |
+| `POST` | `/alerts/{alert_id}/email` | Dispatch SMTP email alert for a triggered alert |
 
 ---
 
@@ -432,12 +434,11 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 ---
 
-## 👤 Author
+## 👤 Author & Team Contributors
 
-**Yogesh Patil**
-- GitHub: [@yogesh-patil2003](https://github.com/yogesh-patil2003)
-- Project: [GeoAlert](https://github.com/yogesh-patil2003/GeoAlert)
-- Live App: [https://geo-alert-ten.vercel.app/](https://geo-alert-ten.vercel.app/)
+Collaborative capstone platform developed by **Yogesh Patil** ([@yogesh-patil2003](https://github.com/yogesh-patil2003)) and **Samarth Yete** (collaborative backend & full-stack contributions reflected in Git history).
+- **Portfolio Owner:** [Yogesh Patil](https://www.linkedin.com/in/yogeshpatil2003/) · `officialyogeshpatil0@gmail.com`
+- **Live App:** [https://geo-alert-ten.vercel.app/](https://geo-alert-ten.vercel.app/)
 
 ---
 

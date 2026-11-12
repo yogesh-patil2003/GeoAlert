@@ -57,6 +57,8 @@ By coupling high-resolution multispectral imagery from **ESA Copernicus Sentinel
 
 ## 🖼️ Screenshots
 
+![GeoAlert 3D Globe Landing Platform](assets/geoalert-preview.png)
+
 > Visit the live app at [https://geo-alert-ten.vercel.app/](https://geo-alert-ten.vercel.app/) to see GeoAlert in action.
 
 ---
